@@ -11,7 +11,7 @@ import { subject } from './data-type';
 })
 export class AppComponent {
 
-  constructor(private route:RouteService, private router: Router){}
+  constructor(private route: RouteService, private router: Router) { }
 
   title = 'add-subjects';
   image: File;
@@ -20,15 +20,15 @@ export class AppComponent {
     this.image = event.target.files[0];
   }
 
-  addSubject(data:subject):void{
-    // console.log(data)
+  addSubject(data: subject) {
     const formData = new FormData();
-    formData.append('data',JSON.stringify(data))
+    formData.append('data', new Blob([JSON.stringify(data)], {
+      type: "application/json"
+    }));
     formData.append('image', this.image);
-
-    this.route.addSubjectsroute(formData).subscribe((result)=>{
-      if(result){
-        alert(result);
+    this.route.addSubjectsroute(formData).subscribe((result) => {
+      if (result) {
+        alert(result["Response"]);
       }
       console.warn(result);
     });

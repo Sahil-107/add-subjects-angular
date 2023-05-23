@@ -17,7 +17,7 @@ export class RouteService {
   };
 
   addSubjectsroute(data:FormData){
-    console.log(data);
-    return this.http.post("http://localhost:8080/adminfunctions/addSubjects", data, this.requestOptions);
+    console.log(data)
+    return this.http.post("http://127.0.0.1:8080/adminfunctions/addSubjects", data);
   }
 }
